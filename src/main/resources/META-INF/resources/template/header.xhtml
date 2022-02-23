@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:outputStylesheet library="css" name="header.css"/>
+    <h:outputStylesheet library="css" name="search.css"/>
+    <h:outputScript library="js" name="menu.js"/>
+    <h:panelGroup layout="block" id="overlay" styleClass="hidden"
+                  onclick="hideMenu()"> </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="title">
+        <span class="title-name">Classic Models</span>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="menu">
+        <h:panelGroup layout="block" styleClass="nav">
+            <h:panelGroup layout="block" styleClass="menu-wrapper" >
+                <i class="fa fa-cubes"></i>
+                <h:outputLink value="productlines.xhtml">
+                    Products
+                </h:outputLink>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="menu-wrapper" >
+                <i class="fa fa-users"></i>
+                <h:outputLink value="customer.xhtml">
+                    Customer
+                </h:outputLink>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="menu-wrapper" >
+                <i class="fa fa-list-alt"></i>
+                <h:outputLink value="orders.xhtml">
+                    Orders
+                </h:outputLink>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="option">
+            <h:panelGroup layout="block" styleClass="search-container">
+                <h:form>
+                    <i class="fa fa-search searchIcon"></i>
+                    <h:inputText id="search" value="#{searchController.searchTerm}"
+                                 a:placeholder="search"
+                                 onkeypress="if (event.keyCode === 13) {onchange(event); return false;}"
+                                 onchange="return event.keyCode !== undefined">
+                        <f:ajax listener="#{searchController.search}" render="searchResults" />
+                    </h:inputText>
+                    <h:panelGroup  id="searchResults" styleClass="search-results">
+                        <p>TODO: Display search results</p>
+                    </h:panelGroup>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="menu-wrapper" >
+                <div onclick="showMenu('organization');return false;"
+                     class="menu-opener">Organization &#9660;
+                </div>
+                <h:panelGroup layout="block" id="organization" styleClass="menu closed">
+                    <h:outputLink value="#">
+                        <i class="fa fa-id-badge"></i>
+                        Employees
+                    </h:outputLink>
+                    <h:outputLink value="#">
+                        <i class="fa fa-building-o"></i>
+                        Offices
+                    </h:outputLink>
+                    <h:outputLink value="#">
+                        <i class="fa fa-sitemap"></i>
+                        Org. Chart
+                    </h:outputLink>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</ui:composition>

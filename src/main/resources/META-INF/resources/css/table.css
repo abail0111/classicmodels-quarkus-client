@@ -1,0 +1,18 @@
+.data_table {
+    max-width: 1300px;
+}
+.data_table--header {
+    color: white;
+    text-align: left;
+    background: #1b3c4c;
+    padding: 10px;
+}
+.data_table--odd {
+    background: #dfdfdf;
+}
+data_table--even {
+
+}
+.data_table td {
+    padding: 10px;
+}

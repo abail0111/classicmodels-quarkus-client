@@ -1,0 +1,33 @@
+.search-container {
+    display: inline-flex;
+    position: relative;
+    border: 0 transparent;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-right: 50px;
+    background: white;
+}
+.searchIcon {
+    padding: 0.3rem;
+}
+input[type=text] {
+    width: 300px;
+    padding: 5px 20px;
+    border: 0 transparent;
+    flex: 1;
+}
+input[type=text]:hover {
+    box-shadow: none;
+    border: 0 transparent;
+}
+input[type=text]:focus {
+    outline: none !important;
+    box-shadow: none;
+    border-color: transparent;
+}
+.search-results {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    display: none;
+}

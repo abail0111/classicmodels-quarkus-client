@@ -1,0 +1,46 @@
+<ui:composition template="template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:define name="content">
+    <h:messages/>
+
+    <h:form>
+    <h:panelGroup>
+
+        <h:dataTable value = "#{orderController.orders}" var = "order"
+                     styleClass = "data_table"
+                     headerClass = "data_table--header"
+                     rowClasses = "data_table--odd,data_table--even">
+
+          <h:column>
+            <f:facet name = "header">Order</f:facet>
+            #{order.id}
+          </h:column>
+          <h:column>
+            <f:facet name = "header">Status</f:facet>
+            #{order.status}
+          </h:column>
+          <h:column>
+            <f:facet name = "header">Comments</f:facet>
+            #{order.comments}
+          </h:column>
+          <h:column>
+            <f:facet name = "header">Ordered</f:facet>
+            #{order.orderDate}
+          </h:column>
+          <h:column>
+            <f:facet name = "header">Required</f:facet>
+            #{order.requiredDate}
+          </h:column>
+          <h:column>
+            <f:facet name = "header">Shipped</f:facet>
+            #{order.shippedDate}
+          </h:column>
+        </h:dataTable>
+
+    </h:panelGroup>
+    </h:form>
+  </ui:define>
+</ui:composition>
