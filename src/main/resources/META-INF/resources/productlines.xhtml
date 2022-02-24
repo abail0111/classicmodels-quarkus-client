@@ -7,22 +7,30 @@
     <h:messages/>
 
     <h:form>
-    <h:panelGroup styleClass="productlines">
-      <ui:repeat value="#{productController.productLines}" var="productline">
-        <div class="productline--container">
-          <div class="productline--title">
-            <h:outputText value="#{productline.id}"/>
+      <div class="controls">
+        <h:commandLink styleClass="button-secondary" action="products.xhtml?faces-redirect=true" value="All Products">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </h:commandLink>
+        <h:commandLink styleClass="button" action="products.xhtml?faces-redirect=true">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </h:commandLink>
+      </div>
+      <h:panelGroup styleClass="productlines">
+        <ui:repeat value="#{productController.productLines}" var="productline">
+          <div class="productline--container">
+            <div class="productline--title">
+              <h:outputText value="#{productline.id}"/>
+            </div>
+            <div class="productline--description">
+              <h:outputText value="#{productline.textDescription}"/>
+            </div>
+            <h:commandLink styleClass="button-secondary" action="#{productController.setProductLine(productline.id)}" value="#{productline.id}">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </h:commandLink>
           </div>
-          <div class="productline--description">
-            <h:outputText value="#{productline.textDescription}"/>
-          </div>
-          <h:commandLink styleClass="button-secondary" action="#{productController.setProductLine(productline.id)}" value="#{productline.id}">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </h:commandLink>
-        </div>
 
-      </ui:repeat>
-    </h:panelGroup>
+        </ui:repeat>
+      </h:panelGroup>
     </h:form>
   </ui:define>
 </ui:composition>

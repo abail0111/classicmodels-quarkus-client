@@ -2,18 +2,17 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pg = "http://java.sun.com/jsf/composite/pagination">
   <ui:define name="content">
     <h:messages/>
 
     <h:form>
-    <h:panelGroup>
-
+      <h:panelGroup id="results">
         <h:dataTable value = "#{productController.products}" var = "product"
                      styleClass = "data_table"
                      headerClass = "data_table--header"
                      rowClasses = "data_table--odd,data_table--even">
-
           <h:column>
             <f:facet name = "header">Name</f:facet>
             #{product.productName}
@@ -42,10 +41,21 @@
             <f:facet name = "header">MSRP</f:facet>
             #{product.msrp}
           </h:column>
-
+          <h:column>
+            <div class="data_table--options">
+              <h:commandLink styleClass="button" action="#{productController.updateProduct(product)}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <f:ajax render="results"/>
+              </h:commandLink>
+              <h:commandLink styleClass="button" action="#{productController.deleteProduct(product)}">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                <f:ajax render="results"/>
+              </h:commandLink>
+            </div>
+          </h:column>
         </h:dataTable>
-
-    </h:panelGroup>
+        <pg:pagination controller="#{productController}"/>
+      </h:panelGroup>
     </h:form>
   </ui:define>
 </ui:composition>

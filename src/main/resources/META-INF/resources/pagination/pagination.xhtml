@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite">
+
+    <composite:interface>
+        <composite:attribute name = "controller" />
+    </composite:interface>
+
+    <composite:implementation>
+        <h:panelGroup layout="block" id="paginationPanel"
+                      styleClass="#{cc.attrs.controller.emptyList?'hidden':'pagination'} ">
+            <h:commandLink
+                    action="#{cc.attrs.controller.prevPage}"
+                    value="❮"
+                    disabled="#{cc.attrs.controller.page lt 1}"
+                    styleClass="pagination_nav">
+                <f:ajax render="results"/>
+            </h:commandLink>
+            <c:forEach items="#{cc.attrs.controller.pageList}" var="pageNumber">
+                <h:commandLink
+                        value="#{pageNumber + 1}"
+                        action="#{cc.attrs.controller.selectPage(pageNumber)}"
+                        disabled="#{cc.attrs.controller.page eq pageNumber}"
+                        styleClass="#{cc.attrs.controller.page eq pageNumber ? 'pagination_active_page' : ''}">
+                    <f:ajax render="results"/>
+                </h:commandLink>
+            </c:forEach>
+            <h:commandLink
+                    action="#{cc.attrs.controller.nextPage}"
+                    value="❯"
+                    disabled="#{cc.attrs.controller.page gt cc.attrs.controller.pageCount - 2}"
+                    styleClass="pagination_nav">
+                <f:ajax render="results"/>
+            </h:commandLink>
+        </h:panelGroup>
+    </composite:implementation>
+</html>

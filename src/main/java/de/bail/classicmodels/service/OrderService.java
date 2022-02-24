@@ -7,6 +7,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @ApplicationScoped
@@ -15,10 +17,12 @@ public interface OrderService {
 
     @GET
     @Path("/order/{id}")
-    OrderDto getOrderById(@PathParam("id") int id);
+    Response getOrderById(@PathParam("id") int id);
 
     @GET
     @Path("/order")
-    List<OrderDto> getOrders();
+    Response getOrders(@QueryParam("offset") int offset,
+                       @QueryParam("limit") int limit,
+                       @QueryParam("status") String status);
 
 }

@@ -8,15 +8,18 @@ html {
   visibility: hidden;
   display: none;
 }
-
 body {
   margin: 0;
 }
-
 body #content {
   margin: 2rem;
 }
-
+form {
+  max-width: 1300px;
+}
+a {
+  color: #1b3c4c;
+}
 .error {
   color: red;
 }
@@ -70,6 +73,20 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
   outline: none;
 }
 
+.button {
+  font-size: 0.9rem;
+  border: 1px solid #1b3c4c;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background: #1b3c4c;
+  color: white;
+  margin: 0.5rem;
+  text-decoration: none;
+  text-align: center;
+}
+.button:hover {
+  background: #132a34;
+}
 .button-secondary {
   font-size: 0.9rem;
   border: 1px solid #1b3c4c;
@@ -84,16 +101,23 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 .button-secondary:hover {
   background: #eeeeee;
 }
+.controls {
+  width: 100%;
+  max-width: 1230px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
 .productlines {
   display: flex;
   flex-wrap: wrap;
 }
 .productline--container {
-  border: 1px solid #2a2a2a;
+  border: 1px solid #9f9f9f;
   border-radius: 10px;
   overflow: hidden;
-  margin: 0.5rem;
+  margin: 10px;
   max-width: 600px;
   min-height: 200px;
   display: inline-flex;
@@ -111,4 +135,31 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 }
 .productline--container .button-secondary {
   align-self: end;
+}
+.pagination {
+  text-align: center;
+  margin:2rem;
+}
+.pagination a {
+  font-size: 1.2em;
+  padding: 5px;
+  text-decoration: none;
+}
+.pagination a:hover {
+  text-decoration: underline;
+}
+.pagination_active_page{
+  color: #1b3c4c;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 5px;
+  text-decoration: none;
+}
+.pagination_nav {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.pagination_nav:hover {
+  font-weight: bold;
+  text-decoration: none !important;
 }

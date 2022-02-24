@@ -2,18 +2,17 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pg = "http://java.sun.com/jsf/composite/pagination">
   <ui:define name="content">
     <h:messages/>
 
     <h:form>
-    <h:panelGroup>
-
+      <h:panelGroup id="results">
         <h:dataTable value = "#{customerController.customers}" var = "customer"
                      styleClass = "data_table"
                      headerClass = "data_table--header"
                      rowClasses = "data_table--odd,data_table--even">
-
           <h:column>
             <f:facet name = "header">Customer</f:facet>
             #{customer.customerName}
@@ -27,8 +26,8 @@
             #{customer.lastName}
           </h:column>
         </h:dataTable>
-
-    </h:panelGroup>
+        <pg:pagination controller="#{customerController}"/>
+      </h:panelGroup>
     </h:form>
   </ui:define>
 </ui:composition>
