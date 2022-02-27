@@ -1,0 +1,25 @@
+query Search ($term: String!, $limit: Int!) {
+  searchContact(term: $term, limit: $limit) {
+    ...contact
+    ... on Customer {
+      type: __typename,
+      title: customerName
+      employee: salesRepEmployee {
+        ...contact
+      }
+    }
+    ... on Employee {
+      type: __typename,
+      title: jobTitle
+      employee: reportsTo {
+        ...contact
+      }
+    }
+  }
+}
+
+fragment contact on Contact {
+  id
+  firstName
+  lastName
+}
