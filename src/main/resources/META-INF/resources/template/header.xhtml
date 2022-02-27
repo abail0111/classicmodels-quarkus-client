@@ -51,8 +51,9 @@
                 <h:panelGroup  id="searchResults" styleClass="search-results">
                     <h:dataTable value = "#{searchController.contacts}" var = "contact">
                         <h:column>
+                            <f:facet name = "header">Contacts</f:facet>
                             <h:commandLink styleClass="result" action="customer.xhtml">
-                                <span class="name">
+                                <h:panelGroup styleClass="name">
                                     <h:panelGroup styleClass="#{contact.type != 'Customer'? '' : 'hidden'}">
                                         <i class="fa fa-id-badge"></i>
                                     </h:panelGroup>
@@ -61,14 +62,16 @@
                                     </h:panelGroup>
                                     #{contact.firstName}&#xA0;
                                     #{contact.lastName}
-                                </span>
-                                <span class="sub_title">
+                                </h:panelGroup>
+                                <h:panelGroup styleClass="sub_title">
                                     #{contact.title}
-                                </span>
-                                <span class="employee">
+                                </h:panelGroup>
+                                <h:panelGroup styleClass="employee #{contact.employee != null? '' : 'hidden'}">
+                                    &#xA0;&#10095;
+                                    <i class="fa fa-id-badge"></i>
                                     #{contact.employee.firstName}&#xA0;
                                     #{contact.employee.lastName}
-                                </span>
+                                </h:panelGroup>
                             </h:commandLink>
 
                         </h:column>

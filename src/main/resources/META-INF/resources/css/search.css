@@ -30,30 +30,39 @@ input[type=text]:focus {
 }
 .search-results {
     position: absolute;
+    width: 300px;
     top: 130px;
-    right: 20px;
     box-shadow: 0px 0px 5px 1px #2a2a2a;
     padding: 0.2rem;
     background: white;
     border-radius: 5px;
+}
+.search-results table {
+    width:100%
+}
+.search-results table th {
+    text-align: left;
+    font-weight: normal;
+    padding: 0.5rem;
 }
 .result {
     padding: 0.5rem;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    border-top: 1px solid gray;
 }
 .result:hover {
-    background: #9f9f9f;
+    background: #f3f3f3;
 }
 .result .name {
     color: #1b3c4c;
     font-size: 1.2rem;
 }
 .result .sub_title {
-
+    color: #1b3c4c;
 }
 .result .employee {
     color: #2a2a2a;
+    font-size: 0.7rem;
 }
